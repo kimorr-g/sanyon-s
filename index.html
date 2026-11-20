@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A Proposition</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #101010;
+  color: #f1eeee;
+  font-family: Georgia, serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+}
+
+.card {
+  text-align: center;
+  max-width: 430px;
+  width: 100%;
+  padding: 40px 25px;
+  border: 1px solid #333;
+  background: #171717;
+}
+
+.small {
+  color: #a88a91;
+  font-size: 11px;
+  letter-spacing: 4px;
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: normal;
+  margin: 30px 0;
+}
+
+p {
+  font-size: 17px;
+  line-height: 1.9;
+  color: #c5bfc1;
+}
+
+strong {
+  color: #f1eeee;
+}
+
+.buttons {
+  margin-top: 30px;
+}
+
+button {
+  padding: 13px 20px;
+  margin: 8px;
+  border: 1px solid #776067;
+  background: transparent;
+  color: #f1eeee;
+  font-family: Georgia, serif;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #776067;
+}
+
+#response {
+  margin-top: 25px;
+  color: #d9a9b5;
+  line-height: 1.8;
+}
+
+.footer {
+  margin-top: 40px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #555;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <div class="small">A PROPOSITION</div>
+
+  <h1>I've got a question.</h1>
+
+  <p>
+    Can I keep you around,<br>
+    <strong>but like, romantically?</strong>
+  </p>
+
+  <p>
+    I think you owe me a relationship,<br>
+    honestly.
+  </p>
+
+  <div class="buttons">
+    <button onclick="yes()">Fine, you win.</button>
+    <button onclick="no()">Absolutely not.</button>
+  </div>
+
+  <div id="response"></div>
+
+  <div class="footer">THINK CAREFULLY.</div>
+
+</div>
+
+<script>
+function yes() {
+  document.getElementById("response").innerHTML =
+  "Excellent choice. I'll try to be tolerable. ♡";
+}
+
+function no() {
+  document.getElementById("response").innerHTML =
+  "Interesting. I'm choosing to believe you misclicked.";
+}
+</script>
+
+</body>
+</html>
