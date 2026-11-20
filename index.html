@@ -3,87 +3,136 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>A Proposition</title>
+<title>a rather personal question</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600&display=swap');
+
 * {
   box-sizing: border-box;
 }
 
 body {
-  background: #101010;
-  color: #f1eeee;
-  font-family: Georgia, serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
   margin: 0;
-  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eee9e3;
+  color: #292523;
+  padding: 24px;
 }
 
 .card {
-  text-align: center;
-  max-width: 430px;
   width: 100%;
-  padding: 40px 25px;
-  border: 1px solid #333;
-  background: #171717;
+  max-width: 460px;
+  text-align: center;
+  padding: 55px 30px;
+  background: #f8f5f0;
+  border: 1px solid #ded6cd;
 }
 
-.small {
-  color: #a88a91;
-  font-size: 11px;
-  letter-spacing: 4px;
+.eyebrow {
+  font-family: 'Manrope', sans-serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #9b817c;
 }
 
 h1 {
-  font-size: 32px;
-  font-weight: normal;
-  margin: 30px 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 1.05;
+  margin: 35px 0;
+  letter-spacing: -1px;
 }
 
-p {
-  font-size: 17px;
-  line-height: 1.9;
-  color: #c5bfc1;
+.message {
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+  line-height: 2.2;
+  color: #77706c;
 }
 
-strong {
-  color: #f1eeee;
+.message em {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 25px;
+  color: #55433f;
 }
 
 .buttons {
-  margin-top: 30px;
+  position: relative;
+  height: 95px;
+  margin-top: 35px;
 }
 
 button {
-  padding: 13px 20px;
-  margin: 8px;
-  border: 1px solid #776067;
-  background: transparent;
-  color: #f1eeee;
-  font-family: Georgia, serif;
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  letter-spacing: 1px;
+  padding: 13px 23px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.25s ease;
 }
 
-button:hover {
-  background: #776067;
+.yes {
+  position: absolute;
+  left: 18%;
+  top: 15px;
+  background: #66514c;
+  color: #f8f5f0;
+  border: 1px solid #66514c;
+}
+
+.yes:hover {
+  background: #88716a;
+}
+
+.no {
+  position: absolute;
+  left: 55%;
+  top: 15px;
+  background: transparent;
+  color: #66514c;
+  border: 1px solid #cfc3b9;
+}
+
+.no:hover {
+  background: #eee6df;
 }
 
 #response {
-  margin-top: 25px;
-  color: #d9a9b5;
-  line-height: 1.8;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-style: italic;
+  line-height: 1.5;
+  color: #8b6968;
+  margin-top: 15px;
 }
 
 .footer {
-  margin-top: 40px;
-  font-size: 10px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 9px;
   letter-spacing: 2px;
-  color: #555;
+  text-transform: uppercase;
+  color: #b1a29a;
+  margin-top: 35px;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 400px) {
+  h1 {
+    font-size: 40px;
+  }
+
+  .card {
+    padding: 45px 20px;
+  }
 }
 </style>
 </head>
@@ -92,40 +141,70 @@ button:hover {
 
 <div class="card">
 
-  <div class="small">A PROPOSITION</div>
+  <div class="eyebrow">A rather personal question</div>
 
-  <h1>I've got a question.</h1>
+  <h1>a rather personal<br>question</h1>
 
-  <p>
+  <div class="message">
     Can I keep you around,<br>
-    <strong>but like, romantically?</strong>
-  </p>
-
-  <p>
-    I think you owe me a relationship,<br>
+    <em>but like, romantically?</em>
+    <br><br>
+    I think u owe me a relationship,<br>
     honestly.
-  </p>
+  </div>
 
-  <div class="buttons">
-    <button onclick="yes()">Fine, you win.</button>
-    <button onclick="no()">Absolutely not.</button>
+  <div class="buttons" id="buttons">
+    <button class="yes" onclick="sayYes()">well, alright</button>
+    <button class="no" id="noBtn">nice try</button>
   </div>
 
   <div id="response"></div>
 
-  <div class="footer">THINK CAREFULLY.</div>
+  <div class="footer" id="footer">
+    made with questionable intentions
+  </div>
 
 </div>
 
 <script>
-function yes() {
-  document.getElementById("response").innerHTML =
-  "Excellent choice. I'll try to be tolerable. ♡";
+const noBtn = document.getElementById("noBtn");
+const buttons = document.getElementById("buttons");
+
+function moveNo() {
+  const maxX = buttons.clientWidth - noBtn.offsetWidth;
+  const maxY = buttons.clientHeight - noBtn.offsetHeight;
+
+  noBtn.style.left = Math.random() * maxX + "px";
+  noBtn.style.top = Math.random() * maxY + "px";
 }
 
-function no() {
+noBtn.addEventListener("mouseenter", moveNo);
+
+noBtn.addEventListener("touchstart", function(e) {
+  e.preventDefault();
+  moveNo();
+});
+
+noBtn.addEventListener("click", moveNo);
+
+function sayYes() {
+  document.querySelector(".eyebrow").innerHTML =
+    "well, that settles it";
+
+  document.querySelector("h1").innerHTML =
+    "it's a date.";
+
+  document.querySelector(".message").innerHTML =
+    "I'll try not to make u regret this.<br>" +
+    "<em>no promises, though.</em>";
+
+  buttons.classList.add("hidden");
+
   document.getElementById("response").innerHTML =
-  "Interesting. I'm choosing to believe you misclicked.";
+    "congratulations, you've officially been promoted to my favorite person.";
+
+  document.getElementById("footer").innerHTML =
+    "glad u said yes";
 }
 </script>
 
